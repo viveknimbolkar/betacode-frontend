@@ -1,0 +1,25 @@
+.css-container{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+.css-label{
+    display: flex;
+    align-items: center;
+    background: #000;
+    height: 30px;
+}
+.css-icon{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.css-code{
+    width: 100%;
+    height:400px;
+    background: #1f1f1f;
+    color: #fff;
+    border: 0;
+    padding: 10px 20px;
+    outline: 0;
+}
