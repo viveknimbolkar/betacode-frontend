@@ -1,12 +1,19 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: sans-serif;
 }
 
-body{
-  background: #454545;
-  color: #fff;
+body {
+  background: var(--cb-black-v1);
+  color: var(--cb-white-v1);
 }
 
+:root {
+  --cb-black-v1: #000;
+  --cb-black-v2: #1e1f25;
+  --cb-gray-v1: #5a5f72;
+  --cb-gray-v2: #d4d7dd;
+  --cb-white-v1: #fff;
+}
