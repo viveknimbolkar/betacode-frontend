@@ -2,51 +2,73 @@ import styled from "@emotion/styled";
 import {
   Box,
   Button,
+  Collapse,
+  List,
+  ListItemIcon,
   ListItemButton,
   ListItemText,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import codepen from "./codepen.png";
 import adoby from "./adoby.jpg";
-import { ExpandMoreOutlined, WindowOutlined } from "@mui/icons-material";
+import logo from "./logo.png";
+import v from "./v.png";
+import {
+  ExpandLessOutlined,
+  ExpandMoreOutlined,
+  WindowOutlined,
+} from "@mui/icons-material";
 
 function Sidemenu() {
+  const [open, setOpen] = useState(false);
+
+  const Handleclick = () => {
+    setOpen(!open);
+  };
+
   const Sidemenucontainer = styled(Box)`
-    border: 2px solid red;
-    font-family:sans-serif;
+    font-family:Lato;
     display;flex;
+    position:fixed;
     align-items:center;
     justify-content:center;
-    color: white;
+    color: #c7c7c9;
     padding:10px;
-    width: 250px;
-    background: #454545;
+    height:100vh;
+    overflow-y:scroll;
+    overflow-x:hidden;
+    width: 210px;
+    border:2px solid red;
+    background: #1e1f26;
   `;
   const Image = styled(Box)`
     display: flex;
-    justify-content:start;
+    justify-content: start;
     align-items: center;
   `;
   const Sidecont = styled(Box)`
     display: flex;
     justify-content: center;
-    align-items:starts;
-    flex-direction:column;
-    margin-top:10px;
+    align-items: starts;
+    flex-direction: column;
+    margin-top: 10px;
   `;
   const Sbutton = styled(Box)`
     display: flex;
     justify-content: center;
     flex-direction: column;
-    gap:5px;
+    gap: 5px;
   `;
   const Firstlist = styled(Box)`
-  display: flex;
-  align-items:starts;
-  flex-direction: column;
+    display: flex;
+    align-items: starts;
+    flex-direction: column;
   `;
   const Bottomimg = styled(Box)``;
+  const Hidecont = styled(Box)`
+    border: 2px solid red;
+  `;
   return (
     <>
       <Sidemenucontainer>
@@ -55,32 +77,102 @@ function Sidemenu() {
         </Image>
         <Sidecont>
           <Sbutton>
-            <Typography sx={{
-              fontSize:"15px",
-              fontWeight:"500",
-            }} variant="h6">Create</Typography>
+            <Typography
+              sx={{
+                fontSize: "11px",
+                fontWeight: "550",
+                marginTop: "10px",
+              }}
+              variant="h6"
+            >
+              CREATE{" "}
+            </Typography>
             <Button
               sx={{
-                display:'flex',
-                backgroundColor:"black",
-                justifyContent:"start",
+                display: "flex",
+                backgroundColor: "#2c303a",
+                justifyContent: "start",
                 padding: "10px",
                 width: "160px",
+                borderTop: "4px solid #20bfef",
+                "&:hover": {
+                  backgroundColor: "black",
+                },
               }}
+              onClick={Handleclick}
               size="large"
               variant="contained"
               startIcon={<WindowOutlined />}
-              endIcon={<ExpandMoreOutlined />}
             >
               Pen
+              {open ? (
+                <ExpandMoreOutlined sx={{ marginLeft: "30px" }} />
+              ) : (
+                <ExpandLessOutlined sx={{ marginLeft: "30px" }} />
+              )}
             </Button>
+            <Collapse in={open} timeout="auto" unmountOnExit>
+              <List
+                component="div"
+                sx={{
+                  display: "flex",
+                  gap: "4px",
+                  flexDirection: "column",
+                  width: "160px",
+                  justifyContent: "start",
+                }}
+                disablePadding
+              >
+                <ListItemButton
+                  sx={{
+                    backgroundColor: "#2c303a",
+                    borderRadius: "4px",
+                    "&:hover": {
+                      backgroundColor: "black",
+                    },
+                  }}
+                >
+                  <Box
+                    component="img"
+                    src={logo}
+                    height="18px"
+                    marginRight="5px"
+                  />
+                  <Typography variant="h6" fontSize="15px">
+                    Pen
+                  </Typography>
+                </ListItemButton>
+                <ListItemButton
+                  sx={{
+                    backgroundColor: "#2c303a",
+                    borderRadius: "4px",
+                    "&:hover": {
+                      backgroundColor: "black",
+                    },
+                  }}
+                >
+                  <Box
+                    component="img"
+                    src={v}
+                    height="18px"
+                    marginRight="5px"
+                  />
+                  <Typography variant="h6" fontSize="15px">
+                    Vue Pen
+                  </Typography>
+                </ListItemButton>
+              </List>
+            </Collapse>
             <Button
               sx={{
-                backgroundColor:"black",
+                backgroundColor: "#2c303a",
                 width: "160px",
                 padding: "10px",
-                display:'flex',
-                justifyContent:"start",
+                display: "flex",
+                justifyContent: "start",
+                "&:hover": {
+                  backgroundColor: "black",
+                },
               }}
               size="large"
               variant="contained"
@@ -92,102 +184,230 @@ function Sidemenu() {
           <Firstlist>
             <ListItemButton
               sx={{
-                width: "240px",
+                width: "195px",
                 display: "flex",
-                justifyContent: "center",
-                "&:hover":{
-                  backgroundColor:'black',
-                  transition:"1s"
-                }
+                justifyContent: "flex-starts",
+                marginTop: "15px",
+                "&:hover": {
+                  background: "var( --cb-buttonhover-b1)",
+                },
               }}
             >
-              <ListItemText sx={{
-                fontSize:'18px',
-                fontWeight:"500",
-               
-              }} primary="Your Work" />
+              <Typography
+                variant="h6"
+                sx={{
+                  display: "flex",
+                  justifyContent: "start",
+                  fontSize: "18px",
+                  fontWeight: "500",
+                  color: "#f9f9f9",
+                }}
+              >
+                Your Work
+              </Typography>
             </ListItemButton>
             <ListItemButton
               sx={{
-                width: "240px",
+                width: "195px",
                 display: "flex",
-                justifyContent: "center",
+                justifyContent: "start",
+                "&:hover": {
+                  background: "var( --cb-buttonhover-b1)",
+                },
               }}
             >
-              <ListItemText primary="Activity" />
+              <Typography
+                variant="h6"
+                sx={{
+                  display: "flex",
+                  justifyContent: "start",
+                  fontSize: "18px",
+                  fontWeight: "500",
+                  color: "#f9f9f9",
+                }}
+              >
+                Activity
+              </Typography>
             </ListItemButton>
             <ListItemButton
               sx={{
-                width: "240px",
+                width: "195px",
                 display: "flex",
-                justifyContent: "center",
+                justifyContent: "start",
+                "&:hover": {
+                  background: "var( --cb-buttonhover-b1)",
+                },
               }}
             >
-              <ListItemText primary="Assets" />
+              <Typography
+                variant="h6"
+                sx={{
+                  display: "flex",
+                  justifyContent: "start",
+                  fontSize: "18px",
+                  fontWeight: "500",
+                  color: "#f9f9f9",
+                }}
+              >
+                Assets
+              </Typography>
             </ListItemButton>
             <ListItemButton
               sx={{
-                width: "240px",
+                width: "195px",
                 display: "flex",
-                justifyContent: "center",
+                justifyContent: "start",
+                "&:hover": {
+                  background: "var( --cb-buttonhover-b1)",
+                },
               }}
             >
-              <ListItemText primary="Pinned Items" />
+              <Typography
+                variant="h6"
+                sx={{
+                  display: "flex",
+                  justifyContent: "start",
+                  fontSize: "18px",
+                  fontWeight: "500",
+                  color: "#f9f9f9",
+                }}
+              >
+                Pinned Items
+              </Typography>
             </ListItemButton>
 
             <ListItemButton
               sx={{
-                width: "240px",
+                width: "195px",
                 display: "flex",
-                justifyContent: "center",
-                marginTop: "30px",
+                justifyContent: "start",
+                marginTop: "20px",
+                "&:hover": {
+                  background: "var( --cb-buttonhover-b1)",
+                },
               }}
             >
-              <ListItemText primary="Following" />
+              <Typography
+                variant="h6"
+                sx={{
+                  display: "flex",
+                  justifyContent: "start",
+                  fontSize: "18px",
+                  fontWeight: "500",
+                  color: "#f9f9f9",
+                }}
+              >
+                Following
+              </Typography>
             </ListItemButton>
             <ListItemButton
               sx={{
-                width: "240px",
+                width: "195px",
                 display: "flex",
-                justifyContent: "center",
+                justifyContent: "start",
+                "&:hover": {
+                  background: "var( --cb-buttonhover-b1)",
+                },
               }}
             >
-              <ListItemText primary="Trending" />
+              <Typography
+                variant="h6"
+                sx={{
+                  display: "flex",
+                  justifyContent: "start",
+                  fontSize: "18px",
+                  fontWeight: "500",
+                  color: "#f9f9f9",
+                }}
+              >
+                Trending
+              </Typography>
             </ListItemButton>
             <ListItemButton
               sx={{
-                width: "240px",
+                width: "195px",
                 display: "flex",
-                justifyContent: "center",
+                justifyContent: "start",
+                "&:hover": {
+                  background: "var( --cb-buttonhover-b1)",
+                },
               }}
             >
-              <ListItemText primary="Challenges" />
+              <Typography
+                variant="h6"
+                sx={{
+                  display: "flex",
+                  justifyContent: "start",
+                  fontSize: "18px",
+                  fontWeight: "500",
+                  color: "#f9f9f9",
+                }}
+              >
+                Challenges
+              </Typography>
             </ListItemButton>
             <ListItemButton
               sx={{
-                width: "240px",
+                width: "195px",
                 display: "flex",
-                justifyContent: "center",
+                justifyContent: "start",
+                "&:hover": {
+                  background: "var( --cb-buttonhover-b1)",
+                },
               }}
             >
-              <ListItemText primary="Sparks" />
+              <Typography
+                variant="h6"
+                sx={{
+                  display: "flex",
+                  justifyContent: "start",
+                  fontSize: "18px",
+                  fontWeight: "500",
+                  color: "#f9f9f9",
+                }}
+              >
+                sparks
+              </Typography>
             </ListItemButton>
             <ListItemButton
               sx={{
-                width: "240px",
+                width: "195px",
                 display: "flex",
-                justifyContent: "center",
-                marginTop: "30px",
+                justifyContent: "start",
+                marginTop: "20px",
+                "&:hover": {
+                  background: "var( --cb-buttonhover-b1)",
+                },
               }}
             >
-              <ListItemText primary="Codepen" />
+              <Typography
+                variant="h6"
+                sx={{
+                  display: "flex",
+                  justifyContent: "start",
+                  fontSize: "18px",
+                  fontWeight: "500",
+                  color: "#f9f9f9",
+                }}
+              >
+                Codepen
+              </Typography>
             </ListItemButton>
           </Firstlist>
           <Bottomimg>
-            <Box component="img" src={adoby} height="100px" width="130px" />
-            <Typography sx={{
-              fontSize:"10px"
-            }} variant="h6">
+            <Box
+              component="img"
+              src={adoby}
+              height="100px"
+              width="130px"
+              marginTop="40px"
+            />
+            <Typography
+              sx={{
+                fontSize: "10px",
+              }}
+              variant="h6"
+            >
               Get 10 Free Images From Adobe Stock. Start Now. ads via Carbon
             </Typography>
           </Bottomimg>

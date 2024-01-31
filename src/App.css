@@ -16,4 +16,5 @@ body {
   --cb-gray-v1: #5a5f72;
   --cb-gray-v2: #d4d7dd;
   --cb-white-v1: #fff;
+  --cb-buttonhover-b1:hsl( 225deg 9.52% 8.24%   );
 }
