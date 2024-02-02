@@ -66,9 +66,6 @@ function Sidemenu() {
     flex-direction: column;
   `;
   const Bottomimg = styled(Box)``;
-  const Hidecont = styled(Box)`
-    border: 2px solid red;
-  `;
   return (
     <>
       <Sidemenucontainer>
