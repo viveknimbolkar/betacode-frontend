@@ -76,7 +76,7 @@ function Sidemenu() {
           <Sbutton>
             <Typography
               sx={{
-                fontSize: "11px",
+                fontSize: "12px",
                 fontWeight: "550",
                 marginTop: "10px",
               }}
