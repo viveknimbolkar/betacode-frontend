@@ -133,7 +133,7 @@ function Sidemenu() {
                     component="img"
                     src={logo}
                     height="18px"
-                    marginRight="5px"
+                    marginRight="6px"
                   />
                   <Typography variant="h6" fontSize="15px">
                     Pen
