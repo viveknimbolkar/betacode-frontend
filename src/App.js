@@ -8,6 +8,7 @@ import Signup from "./pages/signup/signup";
 import { APIProvider } from "./api/api";
 
 function App() {
+  console.log("this is app");
   return (
     <APIProvider>
       <BrowserRouter>
